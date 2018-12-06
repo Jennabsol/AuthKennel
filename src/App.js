@@ -1,28 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+import IsAuth from "./components/Auth/IsAuth"
+import "./App.css"
 
 class App extends Component {
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
+
+  state = {
+    activeUser: this.isAuthenticated()
+  }
+
+ setAuth = () => {
+   this.setState({ auth: this.isAuthenticated() })
+ }
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+    return <React.Fragment>
+        <IsAuth isAuthenticated={this.isAuthenticated} setAuth={this.setAuth} />
+      </React.Fragment>
   }
 }
 
-export default App;
+export default App
