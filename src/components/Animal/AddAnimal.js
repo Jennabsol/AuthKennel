@@ -41,7 +41,7 @@ class AddAnimalModal extends React.Component {
         breed: this.state.breed,
         employeeId: this.props.employees.find(e => e.name === this.state.employee).id,
         ownerId: this.props.owners.find(o => o.name === this.state.owner).id,
-        userId: parseInt(this.props.activeUser())
+        userId: parseInt(this.props.activeUserId())
       }
     //   const owner = {
     //     ownerId: this.props.owners.find(o => o.name === this.state.owner).id

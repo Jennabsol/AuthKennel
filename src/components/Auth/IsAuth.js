@@ -1,21 +1,18 @@
 import React, { Component } from "react"
 import Login from "./Login"
-import Welcome from "../welcome"
+import UserAccessLayer from "../UserAccessLayer"
 
 class IsAuth extends Component {
-  activeUser() {
-    return sessionStorage.getItem("credentials")
-  }
-
   render() {
-    console.log(this.activeUser())
-    return <React.Fragment>
+    return (
+      <React.Fragment>
         {this.props.isAuthenticated() ? (
-        <Welcome activeUser={this.activeUser} {...this.props} />
+          <UserAccessLayer {...this.props} />
         ) : (
           <Login {...this.props} />
         )}
       </React.Fragment>
+    )
   }
 }
 

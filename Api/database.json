@@ -6,18 +6,26 @@
       "id": 1
     },
     {
-      "username": "1",
+      "username": "JennaBlas",
       "password": "1",
-      "id": 2
+      "id": 9
     }
   ],
   "animals": [
     {
-      "name": "sf",
-      "breed": "sf",
-      "employeeId": 2,
-      "ownerId": 2,
-      "userId": 1,
+      "name": "Kekoa",
+      "breed": "Dog",
+      "employeeId": 1,
+      "ownerId": 8,
+      "userId": 9,
+      "id": 1
+    },
+    {
+      "name": "j",
+      "breed": "ik",
+      "employeeId": 1,
+      "ownerId": 1,
+      "userId": 9,
       "id": 2
     }
   ],

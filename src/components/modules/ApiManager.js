@@ -1,4 +1,4 @@
-const remoteURL = "http://localhost:3002"
+const remoteURL = "http://localhost:3003"
 
 export default Object.create(null, {
   single: {
@@ -29,7 +29,6 @@ export default Object.create(null, {
         },
         body: JSON.stringify(newObject)
       }).then(e => e.json())
-        .then(() => this.all(resource))
     }
   },
   // addJoiner: {

@@ -1,13 +1,13 @@
 import React, { Component } from "react"
 import ApiManager from "./modules/ApiManager"
-import { Route, Redirect } from "react-router-dom"
+import { Route } from "react-router-dom"
 import AnimalList from "./Animal/AnimalList"
 class ApplicationViews extends Component {
   state = {
-      animals: [],
-      locations: [],
-      employees: [],
-      owners: []
+    animals: [],
+    locations: [],
+    employees: [],
+    owners: []
   }
   componentDidMount() {
     const _state = {}
@@ -30,11 +30,12 @@ class ApplicationViews extends Component {
         this.setState(_state)
       })
   }
+  getAgain = resource => {
+    ApiManager.all(resource).then(res => this.setState({ [resource]: res }))
+  }
   // Animal Functions
   addAnimal = obj =>
-    ApiManager.add("animals", obj).then(animals =>
-      this.setState({ animals: animals })
-    )
+    ApiManager.add("animals", obj).then(() => this.getAgain("animals"))
 
   editAnimal = (id, obj) =>
     ApiManager.edit("animals", id, obj).then(animals =>
@@ -79,18 +80,25 @@ class ApplicationViews extends Component {
 
   render() {
     return (
-    <React.Fragment>
-            <Route exact path="/animals" render={(props) => {
-                return <AnimalList {...props}
-                    deleteAnimal={this.deleteAnimal}
-                    animals={this.state.animals}
-                    addAnimal={this.addAnimal}
-                    employees={this.state.employees}
-                    owners={this.state.owners}
-                    activeUser={this.props.activeUser}
-                     />
-            }} />
-    </React.Fragment>
+      <React.Fragment>
+        <Route
+          exact
+          path="/animals"
+          render={props => {
+            return (
+              <AnimalList
+                {...props}
+                deleteAnimal={this.deleteAnimal}
+                animals={this.state.animals}
+                addAnimal={this.addAnimal}
+                employees={this.state.employees}
+                owners={this.state.owners}
+                activeUserId={this.props.activeUserId}
+              />
+            )
+          }}
+        />
+      </React.Fragment>
     )
   }
 }

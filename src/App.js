@@ -7,11 +7,11 @@ class App extends Component {
 
 
   state = {
-    activeUser: this.isAuthenticated()
+    authTrigger: this.isAuthenticated()
   }
 
  setAuth = () => {
-   this.setState({ auth: this.isAuthenticated() })
+   this.setState({ authTrigger: this.isAuthenticated() })
  }
   render() {
     return <React.Fragment>
